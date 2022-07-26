@@ -1,6 +1,5 @@
-
 @php
-    $menudata = \App\Models\Menu::where('prantsId',0)->get();
+    $menudata = \App\Models\menu::where('menu_type', 2)->get();
 @endphp
 
 @extends('layouts.admin')
@@ -14,11 +13,11 @@
                     <!-- general form elements -->
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Create Menu</h3>
+                            <h3 class="card-title">Create Content</h3>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form action="{{route('manu.store')}}" method="post" enctype="multipart/form-data">
+                        <form action="{{route('page.store')}}" method="post" enctype="multipart/form-data">
                             @if(session('message'))
                                 <script>
 
@@ -27,42 +26,14 @@
                             @endif
 
                             @csrf
-
                             <div class="card-body">
-
-                                <div class="form-group">
-                                    <label for="exampleInputTitle">name</label>
-                                    <input type="text" value="{{old('name')}}" name="name" class="form-control" id="exampleInputTitle" placeholder="Enter menu name">
-                                    @error('name')
-                                        <span class="note-help-block text-danger">
-                                            <strong>{{$message}}</strong>
-                                        </span>
-                                    @enderror
-
-                                </div>
-
-
-                                <div class="form-group">
-                                    <label for="exampleInputStatus">Type</label>
-                                    <select class="form-control form-select" name="type" id="exampleInputStatus">
-                                        <option value="">Chose</option>
-                                        <option value="1">Url</option>
-                                        <option value="2">Dropdown</option>
-                                    </select>
-
-                                    @error('type')
-                                    <span class="note-help-block text-danger">
-                                            <strong>{{$message}}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
 
 
                                 <div class="form-group">
                                     <label for="exampleInputStatus">Prants Id</label>
                                     <select class="form-control form-select" name="prantsid" id="exampleInputStatus">
 
-                                        <option value="0">Chose</option>
+                                        <option value="">Chose</option>
 
                                         @foreach($menudata as $key=> $menu)
                                             <option value="{{$menu->id}}">{{$menu->name}}</option>
@@ -71,40 +42,53 @@
 
                                     </select>
 
-                                    @error('type')
+                                    @error('prantsid')
                                     <span class="note-help-block text-danger">
                                             <strong>{{$message}}</strong>
                                         </span>
                                     @enderror
+                                </div>
+
+
+
+
+
+                                <div class="form-group">
+                                    <label for="exampleInputTitle">Title</label>
+                                    <input type="text" value="{{old('title')}}" name="title" class="form-control" id="exampleInputTitle" placeholder="Enter Title">
+                                    @error('title')
+                                        <span class="note-help-block text-danger">
+                                            <strong>{{$message}}</strong>
+                                        </span>
+                                    @enderror
+
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleInputDescription">Description</label>
+                                    <textarea class="form-control" name="description" id="editor" cols="30" rows="10"></textarea>
+
+
                                 </div>
 
 
                                 <div class="form-group">
-                                    <label for="exampleInputTitle">slug</label>
-                                    <input type="text" value="{{old('slug')}}" name="slug" class="form-control" id="exampleInputTitle" placeholder="Enter slug">
-                                    @error('slug')
+                                    <label for="exampleInputFile">Image input</label>
+                                    <div class="input-group">
+                                        <div class="custom-file">
+                                            <input type="file" name="file" value="{{old('file')}}" class="form-control" id="">
+                                        </div>
+                                        <div class="input-group-append">
+                                            <span class="input-group-text">Upload</span>
+                                        </div>
+                                    </div>
+
+                                    @error('file')
                                     <span class="note-help-block text-danger">
-                                            <strong>{{$message}}</strong>
-                                        </span>
+                                                <strong>{{$message}}</strong>
+                                            </span>
                                     @enderror
-
                                 </div>
-
-
-                                <div class="form-group">
-                                    <label for="exampleInputTitle">Priority</label>
-                                    <input type="number" value="{{old('priority')}}" name="priority" class="form-control" id="exampleInputTitle" placeholder="Enter priority">
-                                    @error('priority')
-                                    <span class="note-help-block text-danger">
-                                            <strong>{{$message}}</strong>
-                                        </span>
-                                    @enderror
-
-                                </div>
-
-
-
-
 
                                 <div class="form-group">
                                     <label for="exampleInputStatus">Status</label>
@@ -122,6 +106,14 @@
                                 </div>
 
                             </div>
+
+
+
+
+
+
+
+
                             <!-- /.card-body -->
 
                             <div class="card-footer">
@@ -136,5 +128,12 @@
                 </div>
 
             </div><!-- /.container-fluid -->
+
+            <div id="editor">
+            </div>
+            <script src="https://cdn.ckeditor.com/4.13.0/standard/ckeditor.js"></script>
+            <script>
+                CKEDITOR.replace( 'editor' );
+            </script>
     </section>
 @endsection

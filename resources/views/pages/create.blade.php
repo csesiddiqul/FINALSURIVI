@@ -1,5 +1,5 @@
 @php
-    $menudata = \App\Models\menu::where('menu_type', 2)->get();
+    $menudata = \App\Models\Menu::where('menu_type', 2)->get();
 @endphp
 
 @extends('layouts.admin')
