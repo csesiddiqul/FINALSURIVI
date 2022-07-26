@@ -17,13 +17,7 @@
 				<div class="col-md-12">
 					<h1 class="title">{{$result->title}}</h1>
 
-
-
-                    <video class="other-img" controls>
-                        <source src="{{$result->video}}" type="video/mp4">
-                        <source src="mov_bbb.ogg" type="video/ogg">
-                        Your browser does not support HTML video.
-                    </video>
+                    <iframe width="560" height="315"  src="{{$result->video}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 					<p class="border-ot mt-2 textp">
 						{{$result->description}}

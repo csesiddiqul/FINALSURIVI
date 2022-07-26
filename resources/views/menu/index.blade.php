@@ -10,8 +10,8 @@
     {{--    @endif--}}
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">Notice list</h3>
-            <a href="{{route('manu.create')}}" class="btn btn-info badge-success float-lg-right"> <i class="fa-solid fa-plus"></i> Add notice  </a>
+            <h3 class="card-title">Menu list</h3>
+            <a href="{{route('manu.create')}}" class="btn btn-info badge-success float-lg-right"> <i class="fa-solid fa-plus"></i> Add Menu  </a>
 
         </div>
         <!-- /.card-header -->

@@ -82,9 +82,11 @@ class MenuController extends Controller
      * @param  \App\Models\menu  $menubar
      * @return \Illuminate\Http\Response
      */
-    public function edit(menu $menubar)
+    public function edit($id)
     {
-        //
+        $menu = Menu::find($id);
+
+        return view('menu.edit',compact('menu'));
     }
 
     /**
@@ -94,9 +96,44 @@ class MenuController extends Controller
      * @param  \App\Models\menu  $menubar
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, menu $menubar)
+    public function update(Request $request,$id)
     {
-        //
+
+
+        $manu = Menu::find($id);
+
+
+
+
+        $this->validate($request,
+            [
+                'name' => 'required',
+                'slug' => 'required',
+                'priority'=> 'required',
+                'status' => 'required|numeric|in:1,2'
+
+            ]);
+
+           $pranid =  $manu->prantsId;
+           $type = $manu->type;
+           $mtye = $manu->menu_type;
+
+
+        $manu->name  = $request->name;
+        $manu->prantsId = $pranid;
+        $manu->type = $type;
+        $manu->slug = $request->slug;
+        $manu->menu_type = $mtye;
+        $manu->Priority = $request->priority;
+        $manu->status = $request->status;
+
+        $manu->save();
+
+        return back()->with('message','Create Successfully');
+
+
+
+
     }
 
     /**
@@ -105,8 +142,15 @@ class MenuController extends Controller
      * @param  \App\Models\menu  $menubar
      * @return \Illuminate\Http\Response
      */
-    public function destroy(menu $menubar)
+    public function destroy($id)
     {
-        //
+
+
+        $mid = Menu::find($id);
+
+        $mid->delete();
+
+        return redirect()->route('manu.index');
+
     }
 }

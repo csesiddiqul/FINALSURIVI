@@ -27,6 +27,7 @@
                             @endif
 
                             @csrf
+
                             <div class="card-body">
 
                                 <div class="form-group">
@@ -39,8 +40,6 @@
                                     @enderror
 
                                 </div>
-
-
 
 
                                 <div class="form-group">
@@ -57,7 +56,6 @@
                                         </span>
                                     @enderror
                                 </div>
-
 
 
                                 <div class="form-group">
@@ -81,17 +79,6 @@
                                 </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
                                 <div class="form-group">
                                     <label for="exampleInputTitle">slug</label>
                                     <input type="text" value="{{old('slug')}}" name="slug" class="form-control" id="exampleInputTitle" placeholder="Enter slug">
@@ -102,27 +89,6 @@
                                     @enderror
 
                                 </div>
-
-
-
-
-
-{{--                                <div class="form-group">--}}
-{{--                                    <label for="exampleInputStatus">Menu Type</label>--}}
-{{--                                    <select class="form-control form-select" name="menutype" id="exampleInputStatus">--}}
-{{--                                        <option value="">Chose</option>--}}
-{{--                                        <option value="1">Static</option>--}}
-{{--                                        <option value="2">Dynamic</option>--}}
-{{--                                    </select>--}}
-
-{{--                                    @error('menutype')--}}
-{{--                                    <span class="note-help-block text-danger">--}}
-{{--                                            <strong>{{$message}}</strong>--}}
-{{--                                        </span>--}}
-{{--                                    @enderror--}}
-{{--                                </div>--}}
-
-
 
 
                                 <div class="form-group">

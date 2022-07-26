@@ -38,8 +38,10 @@ class PublicController extends Controller
         $photoin = photo_gallery::where('status', 1)->limit(3)->orderBy('priority', 'ASC')->get();
         $video = videoGallery::where('status', 1)->limit(3)->orderBy('priority', 'ASC')->get();
 
+        $project = project::where('status', 1)->limit(4)->get();
 
-        return view('publice_page.index', compact('slider', 'services', 'notice', 'slogan', 'card', 'news', 'imlink', 'event','photoin','video'));
+
+        return view('publice_page.index', compact('slider', 'services', 'notice', 'slogan', 'card', 'news', 'imlink', 'event','photoin','video','project'));
     }
 
 

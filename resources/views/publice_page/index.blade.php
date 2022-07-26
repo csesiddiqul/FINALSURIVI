@@ -56,6 +56,7 @@
     </section>
 
 
+
     <section class="welcome">
         <div class="container">
             <img src="{{asset('frontend/img/border.png')}}" class="img-fluid mx-auto d-block">
@@ -156,32 +157,50 @@
 
                                     </ul>
 
-                                    <h3 class="titlehed">video</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="">
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12">
+                                <h1 class="title">video</h1>
+
+                                <div class="about">
                                     <div class="row">
 
                                         @foreach($video as $video)
-                                        <div class="col-md-12">
-                                            <div class="">
-                                                <div class="row">
-                                                    <div class="col-md-12 col-sm-12">
-                                                        <div class="item item-control">
+                                            <div class="col-md-12">
+                                                <div class="">
+                                                    <div class="row">
+                                                        <div class="col-md-12 col-sm-12">
+                                                            <div class="item item-control">
 
 
-                                                            <iframe class="lol" src="{{$video->video}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                                            <p class="details">Tristique tincidunt cursus sed  <a class="readmore mt-2" href="">Read more...</a></p>
+                                                                <iframe class="lol" src="{{$video->video}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                                <p class="details">Tristique tincidunt cursus sed  <a class="readmore mt-2" href="">Read more...</a></p>
 
 
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
                                         @endforeach
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+
+
+
+
+
+
+
                 </div>
             </div>
         </div>
@@ -201,9 +220,34 @@
                             <div class="row">
                                 <div class="col-md-12 col-sm-12">
                                     <div class="item item-control">
-                                        <img src="{{asset($newsData->img)}}" class="img-fluid box-img-2">
+                                        <img src="{{$newsData->img}}" class="img-fluid box-img-2">
                                         <p class="details">{{\Illuminate\Support\Str::limit($newsData->title,25)}}</p>
                                         <p class="details">{{\Illuminate\Support\Str::limit($newsData->description,65)}}<a class="readmore mt-2" href="{{route('singaleNews',$newsData->id)}}" target="">Read more...</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+
+    </section>
+
+
+    <section class="blog">
+        <div class="container">
+            <h1 class="title">Projects</h1>
+            <div class="row">
+                @foreach($project as $key => $projectData)
+                    <div class="col-md-6">
+                        <div class="commite-card" data-aos="flip-right" data-aos-duration="1500">
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12">
+                                    <div class="item item-control">
+                                        <img src="{{$projectData->img}}" class="img-fluid box-img-2">
+                                        <p class="details">{{\Illuminate\Support\Str::limit($projectData->title,25)}}</p>
+                                        <p class="details">{{\Illuminate\Support\Str::limit($projectData->description,65)}}<a class="readmore mt-2" href="{{route('singaleNews',$newsData->id)}}" target="">Read more...</a></p>
                                     </div>
                                 </div>
                             </div>
