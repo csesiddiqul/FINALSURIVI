@@ -171,7 +171,7 @@ class PageController extends Controller
 		
 		
 		if($page->img){
-			@unlink(str_replace('/Storage','Storage',$page->img));
+			unlink(str_replace('/Storage','Storage',$page->img));
 			
 			$page->delete();
 			return redirect()->route('page.index');
